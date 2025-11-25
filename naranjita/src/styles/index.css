@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Identidad Corporativa Computer Patrisoft */
+  --corp-dark: #0F172A;       /* Azul Noche (Sidebar) */
+  --corp-dark-alt: #1E293B;   /* Azul Grisáceo (Gradiente) */
+  --corp-primary: #0EA5E9;    /* Azul Brillante (Botones, Acentos) */
+  --corp-bg: #F1F5F9;         /* Fondo General */
+  --corp-white: #FFFFFF;
+  --corp-text: #334155;       /* Texto General */
+  --corp-text-light: #64748B; /* Subtítulos */
+  --corp-border: #E2E8F0;
+  
+  /* Sombras Suaves */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.15);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--corp-bg);
+  color: var(--corp-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar moderno */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #94A3B8; }

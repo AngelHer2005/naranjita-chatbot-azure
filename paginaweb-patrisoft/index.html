@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computer Patrisoft SAC — Liderando la Transformación Digital</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      /* Paleta de Azules inspirada en la jerarquía de Alicorp pero en Azul */
+      --primary: #0044CC;       /* Azul corporativo fuerte */
+      --primary-dark: #002a80;  /* Azul oscuro para hovers/textos */
+      --secondary: #00A3FF;     /* Azul cian para acentos */
+      --bg-light: #F4F6F9;      /* Gris azulado muy suave para fondos */
+      --white: #FFFFFF;
+      --text-main: #1F2937;     /* Texto casi negro */
+      --text-muted: #64748B;    /* Gris para párrafos */
+      
+      --radius-card: 24px;      /* Bordes muy redondeados estilo Alicorp */
+      --radius-btn: 50px;       /* Botones tipo píldora */
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      --shadow-lg: 0 20px 40px -8px rgba(0, 0, 0, 0.12);
+    }
+
+    /* RESET & BASE */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-main);
+      background-color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; transition: 0.3s; }
+    ul { list-style: none; }
+
+    /* BOTONES */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      font-weight: 600;
+      border-radius: var(--radius-btn);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(0, 68, 204, 0.3);
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    /* NAVBAR - Estilo limpio y blanco como Alicorp */
+    header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      height: 80px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-container {
+      width: 90%;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+    .brand img { height: 40px; } /* Ajusta según tu logo real */
+    
+    nav { display: flex; gap: 32px; }
+    nav a {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-main);
+      position: relative;
+    }
+    nav a:hover { color: var(--primary); }
+    nav a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0%; height: 2px;
+      background: var(--primary); transition: width 0.3s;
+    }
+    nav a:hover::after { width: 100%; }
+
+    /* HERO SECTION - Imagen grande y emotiva */
+    .hero {
+      position: relative;
+      height: 90vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      background: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(0,30,80,0.85) 0%, rgba(0,30,80,0.4) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 90%;
+      max-width: 1280px;
+      margin: 0 auto;
+      color: var(--white);
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      max-width: 700px;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+
+    /* SECCIONES GENERALES */
+    section { padding: 100px 0; }
+    .container {
+      width: 90%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .section-header { margin-bottom: 60px; max-width: 800px; }
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+    }
+    .section-header p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    /* CARDS GRID (Servicios) */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 40px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.4s ease;
+      border: 1px solid #f0f0f0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+    .card-icon {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 24px;
+      background: var(--bg-light);
+      width: 60px; height: 60px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+    }
+    .card h3 { font-size: 1.5rem; margin-bottom: 16px; color: var(--text-main); }
+    .card p { color: var(--text-muted); margin-bottom: 24px; flex-grow: 1; }
+    .card-link {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* BLOQUE DESTACADO (Tipo Alicorp "Nuestros Negocios") */
+    .feature-block {
+      background-color: var(--bg-light);
+      border-radius: 32px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .feature-img {
+      width: 50%;
+      height: 500px;
+      object-fit: cover;
+    }
+    .feature-content {
+      padding: 60px;
+      width: 50%;
+    }
+    .feature-content h3 {
+      font-size: 2.2rem;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+    }
+    .feature-content p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    /* COMPAÑÍA - Valores */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0; /* Sin espacio, bordes compartidos estilo tabla moderna */
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+    .value-item {
+      background: var(--white);
+      padding: 60px 40px;
+      text-align: center;
+      border-right: 1px solid #e2e8f0;
+    }
+    .value-item:last-child { border-right: none; }
+    .value-item h4 { font-size: 1.25rem; margin-bottom: 12px; color: var(--primary); }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--primary-dark);
+      color: var(--white);
+      padding: 80px 0 40px;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-col h4 { font-size: 1.1rem; margin-bottom: 24px; opacity: 0.9; }
+    .footer-col a { display: block; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      padding-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero h1 { font-size: 2.5rem; }
+      .feature-block { flex-direction: column; }
+      .feature-img, .feature-content { width: 100%; height: auto; }
+      .feature-img { height: 300px; }
+      .values-grid { grid-template-columns: 1fr; }
+      .value-item { border-right: none; border-bottom: 1px solid #e2e8f0; }
+      .footer-top { grid-template-columns: 1fr; }
+      nav { display: none; } /* En móvil se simplifica para este ejemplo */
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <div class="brand">
+        <span>Computer Patrisoft SAC</span>
+      </div>
+      <nav>
+        <a href="#">Inicio</a>
+        <a href="#soluciones">Soluciones</a>
+        <a href="#innovacion">Innovación</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a href="#contacto" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">Hablemos</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Innovamos hoy para transformar el futuro de tu empresa</h1>
+      <p>En Patrisoft, combinamos inteligencia artificial, automatización y desarrollo cloud para crear ecosistemas digitales que impulsan el crecimiento sostenible de las organizaciones peruanas.</p>
+      <div style="display: flex; gap: 16px;">
+        <a href="#soluciones" class="btn btn-primary">Nuestras Soluciones</a>
+        <a href="#contacto" class="btn btn-outline" style="color:white; border-color:white;">Contáctanos</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="soluciones">
+    <div class="container">
+      <div class="section-header">
+        <h2>Nuestras Soluciones</h2>
+        <p>Desarrollamos tecnología con propósito. Cada línea de servicio está diseñada para resolver desafíos complejos y generar valor tangible.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div>
+            <div class="card-icon">💻</div>
+            <h3>Desarrollo de Software</h3>
+            <p>Construimos plataformas robustas y escalables utilizando Python, Django y arquitecturas modernas. Creamos el núcleo digital que su operación necesita para crecer sin límites.</p>
+          </div>
+          <a href="#" class="card-link">Explorar desarrollo &rarr;</a>
+        </div>
+
+        <div class="card">
+          <div>
+            <div class="card-icon">🤖</div>
+            <h3>Inteligencia Artificial</h3>
+            <p>Agentes autónomos y chatbots inteligentes que no solo responden, sino que entienden y actúan. Optimizamos la atención al cliente y procesos internos con IA generativa.</p>
+          </div>
+          <a href="#" class="card-link">Ver soluciones IA &rarr;</a>
+        </div>
+
+        <div class="card">
+          <div>
+            <div class="card-icon">☁️</div>
+            <h3>Cloud & Infraestructura</h3>
+            <p>Implementación segura en AWS y Google Cloud. Gestionamos sus pipelines CI/CD y garantizamos la disponibilidad de sus servicios críticos 24/7.</p>
+          </div>
+          <a href="#" class="card-link">Consultar Cloud &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="innovacion" style="background: white; padding-top:0;">
+    <div class="container">
+      <div class="feature-block">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" alt="Equipo Patrisoft" class="feature-img" />
+        <div class="feature-content">
+          <h3>Impulsando sectores clave</h3>
+          <p>
+            Desde el sector energético e inmobiliario hasta las PYMES emergentes. Nuestra tecnología se adapta a la realidad de cada industria, permitiendo que empresas tradicionales den el salto hacia la <strong>Industria 4.0</strong>.
+          </p>
+          <p>
+            Al igual que los grandes referentes del mercado, creemos en la tecnología como un habilitador de bienestar y eficiencia operativa.
+          </p>
+          <a href="#contacto" class="btn btn-primary">Solicitar consultoría</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="nosotros" style="background-color: var(--bg-light);">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin: 0 auto 60px;">
+        <h2>Nuestra Esencia</h2>
+        <p>Más que proveedores, somos socios estratégicos comprometidos con la ética y la excelencia.</p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-item">
+          <h4>Misión</h4>
+          <p style="color: var(--text-muted);">Democratizar el acceso a tecnología de punta, brindando soluciones que transforman datos en decisiones y procesos en resultados.</p>
+        </div>
+        <div class="value-item">
+          <h4>Visión</h4>
+          <p style="color: var(--text-muted);">Ser el referente peruano en innovación tecnológica, liderando la adopción de IA y automatización en la región andina.</p>
+        </div>
+        <div class="value-item">
+          <h4>Valores</h4>
+          <p style="color: var(--text-muted);">Transparencia absoluta, innovación constante y una obsesión por la seguridad y calidad de cada línea de código.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="container">
+      <div class="grid-3" style="grid-template-columns: 1fr 1fr;">
+        <div>
+          <h2>Empecemos a trabajar</h2>
+          <p style="margin-bottom: 30px; font-size: 1.1rem; color: var(--text-muted);">
+            ¿Listo para optimizar su empresa? Nuestro equipo de especialistas está esperando para diseñar la propuesta a su medida.
+          </p>
+          
+          <div style="margin-bottom: 20px;">
+            <strong style="display:block; color:var(--primary); margin-bottom:5px;">Email Comercial</strong>
+            <span style="font-size:1.2rem;">contacto@computerpatrisoft.pe</span>
+          </div>
+          
+          <div>
+            <strong style="display:block; color:var(--primary); margin-bottom:5px;">Teléfono</strong>
+            <span style="font-size:1.2rem;">+51 1 000 0000</span>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-light); padding: 40px; border-radius: var(--radius-card);">
+          <h3 style="margin-bottom:20px;">Recursos Clave</h3>
+          <p style="margin-bottom:20px;">Acceda a nuestra documentación técnica detallada sobre implementaciones recientes.</p>
+          
+          <a href="/mnt/data/001534530PY-202511-PROPUESTA-DE-DESARROLLO-DE-UNA-PÁGINA-WEB-CON-CHATBOT-INTELIGENTE-PARA-OPTIMIZAR-LA-COMUNICACIÓN-Y-PRESENCIA-DIGITAL-DE-CONAUTI.docx" class="btn btn-outline" download style="width:100%;">
+            📄 Descargar Propuesta Técnica
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <h3 style="color:white; margin-bottom:20px;">Computer Patrisoft SAC</h3>
+          <p style="opacity:0.7; max-width: 300px;">
+            Expertos en transformación digital, desarrollo de software a medida e integración de inteligencia artificial para el mercado moderno.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Compañía</h4>
+          <a href="#nosotros">Sobre Nosotros</a>
+          <a href="#innovacion">Sectores</a>
+          <a href="#contacto">Trabaja con nosotros</a>
+        </div>
+        <div class="footer-col">
+          <h4>Servicios</h4>
+          <a href="#soluciones">Desarrollo Web</a>
+          <a href="#soluciones">Automatización</a>
+          <a href="#soluciones">Consultoría Cloud</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Términos de Servicio</a>
+          <a href="#">Libro de Reclamaciones</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Computer Patrisoft SAC. Todos los derechos reservados.</span>
+        <span>Lima, Perú</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Efecto de Header al hacer Scroll
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.style.boxShadow = "0 4px 20px rgba(0,0,0,0.08)";
+      } else {
+        header.style.boxShadow = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>
