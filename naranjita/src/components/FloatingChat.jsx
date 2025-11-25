@@ -42,11 +42,6 @@ export default function FloatingChat({ tableData }) {
     - AUTOR: Patricio Arroyo.
     - PROBLEMA: El cálculo manual en Excel causaba errores y demoras.
     - SOLUCIÓN: Automatización total con ahorro estimado de S/ 648 anuales.
-
-    === NUESTRA ESENCIA ===
-    - Misión: Democratizar el acceso a tecnología de punta, brindando soluciones que transforman datos en decisiones y procesos en resultados.
-    - Visión: Ser el referente peruano en innovación tecnológica, liderando la adopción de IA y automatización en la región andina.
-    - Valores: Transparencia absoluta, innovación constante y una obsesión por la seguridad y calidad de cada línea de código.
     
     === REGLAS DE COMPORTAMIENTO ===
     1. Si te preguntan por la página web, entrega SIEMPRE este enlace: https://ambitious-river-046989c0f.3.azurestaticapps.net/
