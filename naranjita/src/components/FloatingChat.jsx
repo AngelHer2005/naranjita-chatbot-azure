@@ -23,7 +23,7 @@ export default function FloatingChat({ tableData }) {
   const AZURE_RESOURCE_NAME = "naranjita-gpt"; 
   const AZURE_DEPLOYMENT_ID = "naranjita-chat"; 
   const API_VERSION = "2024-04-01-preview"; 
-  const AZURE_API_KEY = "93ou1OJa4pdQ7VeXrOhIX9Q4KSL0zsujI9izEdfajDdFFHVvz1BWJQQJ99BKACHYHv6XJ3w3AAABACOGKQhp"; // ⚠️ PEGA TU CLAVE
+  const AZURE_API_KEY = ""; // ⚠️ PEGA TU CLAVE
 
 
    // --- 🧠 CEREBRO DE NARANJITA (WEB + TESIS + URL REAL) ---
