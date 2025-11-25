@@ -36,6 +36,8 @@ export default function FloatingChat({ tableData }) {
     - SERVICIOS: Desarrollo de Software, IA, Cloud.
     - UBICACIÓN: Los Olivos, Lima.
 
+    Email comercial: contacto@computerpatrisoft.pe
+
     === DATOS DEL PROYECTO (TESIS) ===
     - TEMA: Sistema Web para Gestión de Planillas.
     - TECNOLOGÍA: React (Frontend), Python Django (Backend), Azure Cloud.
